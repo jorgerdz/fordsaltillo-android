@@ -1,0 +1,156 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.jorgerdz.fordsaltilo.MessageActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:id="@+id/logos">
+
+        <ImageView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/ford"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:layout_marginRight="10dp" />
+
+        <ImageView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:layout_toRightOf="@+id/imageView"
+            android:src="@drawable/mazda"
+            android:layout_weight="1"
+            android:adjustViewBounds="true" />
+
+        <ImageView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:src="@drawable/lincoln"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="5"
+        android:background="#6da0ff"
+        android:layout_below="@+id/logos"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:id="@+id/botones">
+
+        <ImageView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4"
+            android:src="@drawable/phone"
+            android:layout_weight="1" />
+        <ImageView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/mensaje"
+            android:src="@drawable/message"
+            android:layout_weight="1" />
+        <ImageView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView6"
+            android:src="@drawable/location"
+            android:layout_weight="1" />
+        <ImageView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView7"
+            android:src="@drawable/calendar"
+            android:layout_weight="1" />
+        <ImageView
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView8"
+            android:src="@drawable/car"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/botones"
+        android:layout_marginTop="20dp"
+        android:id="@+id/message1"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="06/07/15 08:56"
+            android:id="@+id/textView"
+            android:layout_below="@+id/linearLayout"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="#3265fe"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" />
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Tu agencia Ford te ofrece opciones de crédito a tu medida"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/linearLayout"
+            android:layout_weight="2"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="#90b0ff" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/message1"
+        android:id="@+id/message2"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="05/07/15 06:23"
+            android:id="@+id/textView3"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:paddingBottom="5dp"
+            android:background="#3265fe"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" />
+        <TextView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Tu agencia Ford te invita a la presentación del Focus 2016"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/linearLayout"
+            android:layout_weight="2"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="#90b0ff" />
+    </LinearLayout>
+
+</RelativeLayout>
