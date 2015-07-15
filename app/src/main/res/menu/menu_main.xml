@@ -3,5 +3,5 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.jorgerdz.fordsaltilo.MainActivity">
     <item android:id="@+id/action_logout" android:title="Cerrar Sesión"
-        android:orderInCategory="100" app:showAsAction="never" android:onClick="logout" />
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

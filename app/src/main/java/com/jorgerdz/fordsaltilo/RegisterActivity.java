@@ -22,6 +22,7 @@ import android.provider.ContactsContract;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v7.app.NotificationCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,11 +32,14 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.loopj.android.http.*;
+
+import org.json.JSONArray;
 
 import static android.app.PendingIntent.getActivity;
 
@@ -66,7 +70,7 @@ public class RegisterActivity extends Activity implements LoaderCallbacks<Cursor
 
         preferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         String status = preferences.getString("status", "not logged");
-        if(status == "logged"){
+        if(status.equals("logged")){
             openMainActivity();
         }
 
@@ -203,10 +207,18 @@ public class RegisterActivity extends Activity implements LoaderCallbacks<Cursor
                     }
                 }
 
-
+                @Override
+                public void onFailure(int statusCode, org.apache.http.Header[] headers, java.lang.Throwable throwable, org.json.JSONObject errorResponse){
+                    makeToast();
+                }
             });
 
         }
+    }
+
+    public void makeToast(){
+        Toast.makeText(this, "Algo malo ocurrió, intenta más tarde", Toast.LENGTH_LONG).show();
+        showProgress(false);
     }
 
     public void openMainActivity() {

@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        preferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
         mMensaje = (ImageView) findViewById(R.id.mensaje);
 
         mMensaje.setOnClickListener(new View.OnClickListener() {
@@ -33,20 +35,26 @@ public class MainActivity extends AppCompatActivity {
                 openMessageView();
             }
         });
-
-        createNotification();
     }
 
     protected void logout(){
         API.get("api/auth/signout", null, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, org.apache.http.Header[] headers, org.json.JSONObject response) {
-                if (statusCode < 300) {
+                if (statusCode < 400) {
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("status", "not logged");
                     editor.commit();
                     returnToRegister();
                 }
+            }
+
+            @Override
+            public void onFailure(int statusCode, org.apache.http.Header[] headers, String fail, java.lang.Throwable throwable){
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("status", "not logged");
+                    editor.commit();
+                    returnToRegister();
             }
         });
     };
@@ -70,17 +78,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                logout();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
 

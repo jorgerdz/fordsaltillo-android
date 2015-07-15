@@ -26,6 +26,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login);
 
         preferences= getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
@@ -83,14 +84,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             @Override
             public void onClick(View view) {
                 attemptLogin();
-            }
-        });
-
-        Button mEmailRegisterButton = (Button) findViewById(R.id.email_register_button);
-        mEmailRegisterButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openLoginActivity();
             }
         });
 
@@ -166,11 +159,20 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     }
                 }
 
-
+                @Override
+                public void onFailure(int statusCode, org.apache.http.Header[] headers, java.lang.Throwable throwable, org.json.JSONObject errorResponse){
+                    makeToast();
+                }
             });
 
         }
     }
+
+    public void makeToast(){
+        Toast.makeText(this, "Credenciales Inválidas.", Toast.LENGTH_LONG).show();
+        showProgress(false);
+    }
+
 
     public void openMainActivity() {
         Intent intent = new Intent(this, MainActivity.class);

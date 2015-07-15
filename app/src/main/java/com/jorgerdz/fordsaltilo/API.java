@@ -8,7 +8,7 @@ import com.loopj.android.http.*;
  * Created by jorgerdz on 7/3/15.
  */
 public class API {
-    private static final String BASE_URL = "http://192.168.0.109:3000/";
+    private static final String BASE_URL = "http://104.236.70.57:3000/";
 
     protected static AsyncHttpClient client = new AsyncHttpClient();
     protected static PersistentCookieStore storage;
